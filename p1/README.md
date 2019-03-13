@@ -4,7 +4,7 @@ Code for the Navigation project.
 The repository structured as follows:
 - [models](models) contains the dqn network.
 - [training](training) contains the dqn algorithms for both the unity and lunar-gym environment.
-- [stored_weights)](stored weights) contains the trained models. 
+- [stored_weights](stored weights) contains the trained models. 
 
 
 There are 4 models benchmarked, and the training loss is given below: 
