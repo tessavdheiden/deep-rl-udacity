@@ -2,7 +2,9 @@ from collections import deque
 import numpy as np
 import torch
 
-def dqn(agent, env, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
+from training.utils import get_var_name, get_root_dir
+
+def dqn(agent, env, n_episodes=2000, max_t=1000, model_name='agent', eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.
     
     Params
@@ -35,11 +37,12 @@ def dqn(agent, env, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, ep
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window)>=200.0:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
-            torch.save(agent.qnetwork_local.state_dict(), 'checkpoint.pth')
+            torch.save(agent.qnetwork_local.state_dict(),
+                       get_root_dir() + '/stored_weights/checkpoint_{}.pth'.format(model_name))
             break
     return scores
 
-def dqn_unity(agent, env, brain_name, env_info, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):  
+def dqn_unity(agent, env, brain_name, env_info, model_name, n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     
     scores = []                        # list containing scores from each episode
     scores_window = deque(maxlen=100)  # last 100 scores
@@ -68,6 +71,8 @@ def dqn_unity(agent, env, brain_name, env_info, n_episodes=2000, max_t=1000, eps
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window)>=200.0:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
-            torch.save(agent.qnetwork_local.state_dict(), 'checkpoint.pth')
+            torch.save(agent.qnetwork_local.state_dict(),
+                       get_root_dir() + '/stored_weights/checkpoint_{}.pth'.format(model_name))
             break
+
     return scores
