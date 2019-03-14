@@ -9,26 +9,7 @@ print(np.__version__)
 
 import inspect
 
-def get_var_name(var):
-    callers_local_vars = inspect.currentframe().f_back.f_locals.items()
-    name = [k for k, v in callers_local_vars if v is var]
-    return name[0]
-
-def training_sessions(agent, env, n_episodes, max_t, n_training_sessions):
-    scores_list = []
-    for session in range(n_training_sessions):
-        scores = np.asarray(dqn(agent, env, n_episodes, max_t))
-        scores_list.append(scores)
-
-    scores_list = np.asarray(scores_list)
-    scores_x = np.arange(scores_list.shape[1])
-    scores_mean = scores_list.mean(0)
-    scores_std = scores_list.std(0)
-    return scores_x, scores_mean, scores_std
-
-def plot_multiple_sessions(scores_x, scores_mean, scores_std, label='no name', color='gray'):
-    plt.plot(scores_x, scores_mean, color=color, label=label)
-    plt.fill_between(scores_x, scores_mean - scores_std, scores_mean + scores_std, color=color, alpha=0.2)
+from training.utils import get_var_name, training_sessions, plot_multiple_sessions
 
 
 import gym
