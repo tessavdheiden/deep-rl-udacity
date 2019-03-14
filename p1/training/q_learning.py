@@ -68,6 +68,8 @@ def dqn_unity(agent, env, brain_name, env_info, model_name, n_episodes=2000, max
         eps = max(eps_end, eps_decay*eps) # decrease epsilon
         print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
         if i_episode % 100 == 0:
+            torch.save(agent.qnetwork_local.state_dict(),
+                       get_root_dir() + '/stored_weights/checkpoint_{}.pth'.format(model_name))
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window)>=200.0:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
