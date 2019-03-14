@@ -12,7 +12,7 @@ from training.q_learning import dqn_unity
 from unityagents import UnityEnvironment
 from models.dqn_agent import DQNAgent
 
-env = UnityEnvironment(file_name="Banana_Linux/Banana.x86")
+env = UnityEnvironment(file_name="Banana_Linux/Banana.x86", no_graphics = True)
 seed=0
 #env = UnityEnvironment(file_name="Banana.app")
 
@@ -33,14 +33,14 @@ prio = DQNAgent(state_size, action_size, seed, network_type='linear', config='si
 double_prio = DQNAgent(state_size, action_size, seed, network_type='linear', config='double', memory_type='prioritized')
 
 n_episodes = 2000
-max_t = 100
+max_t = 1000
 n_training_sessions = 1
 
 scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std = training_sessions_unity(vanilla, env, brain_name, env_info, get_var_name(vanilla), n_episodes, max_t, n_training_sessions)
 scores_duel_x, scores_duel_mean, scores_duel_std = training_sessions_unity(duel, env, brain_name, env_info, get_var_name(duel), n_episodes, max_t, n_training_sessions)
-scores_double_x, scores_double_mean, scores_double_std = training_sessions_unity(double, env, brain_name, env_info, get_var_name(double),n_episodes, max_t, n_training_sessions)
-scores_prio_x, scores_prio_mean, scores_prio_std = training_sessions_unity(prio, env, brain_name, env_info, get_var_name(prio),n_episodes, max_t, n_training_sessions)
-scores_double_prio_x, scores_double_prio_mean, scores_double_prio_std = training_sessions_unity(double_prio, env, brain_name, env_info,get_var_name(double_prio), n_episodes, max_t, n_training_sessions)
+scores_double_x, scores_double_mean, scores_double_std = training_sessions_unity(double, env, brain_name, env_info, get_var_name(double), n_episodes, max_t, n_training_sessions)
+scores_prio_x, scores_prio_mean, scores_prio_std = training_sessions_unity(prio, env, brain_name, env_info, get_var_name(prio), n_episodes, max_t, n_training_sessions)
+scores_double_prio_x, scores_double_prio_mean, scores_double_prio_std = training_sessions_unity(double_prio, env, brain_name, env_info, get_var_name(double_prio), n_episodes, max_t, n_training_sessions)
 
 
 # plot the scores
