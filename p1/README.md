@@ -1,7 +1,8 @@
 # deep-rl-udacity
 Code for the Navigation project.
 
-The repository structured as follows:
+## Repo structure
+The folders are organized as follows:
 - [models](models) contains the dqn network.
 - [training](training) contains the dqn algorithms for both the unity and lunar-gym environment.
 - [stored_weights](stored_weights) contains the trained models. 
