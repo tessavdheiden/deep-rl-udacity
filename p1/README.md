@@ -14,10 +14,10 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. If an average score of +13 over 100 consecutive episodes is reached, the game is solved! 
 
 ## Dependancies
-Please look at the requirement.txt
+The code is written in Python and Pytorch with the following dependancies [requirements.txt](requirements.txt)
 
 ## Run the code
-If you want to train the models, you may use the [train_unity.py](train_unity.py) file or the Report.ipyh notebook. If you want to evaluate the models, run evaluate.py, which loads a model with weights from [stored_weights](stored_weights) folder. 
+If you want to train the models, you may use the [train_unity.py](train_unity.py) file or the [Report.ipynb](Report.ipynb) notebook. If you want to evaluate the models, load a the weights of a trained model from the [stored_weights](stored_weights) folder. 
 
 The folders are organized as follows:
 - [models](models) contains the dqn network.
