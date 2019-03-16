@@ -26,3 +26,5 @@ The folders are organized as follows:
 
 There are 4 models benchmarked, and the training loss is given below: 
 ![Benchmark](benchmark_unity_environment.png)
+
+![](banana.gif)
