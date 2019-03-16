@@ -11,6 +11,8 @@ The Unity Banana environment has contains one agent that navigates a large envir
 
 The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. The 35 dimensions of ray perception are broken down as: 7 rays projecting from the agent at the following angles (and returned back in the same order): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. Each ray is 5 dimensional and it projected onto the scene. If it encounters one of four detectable objects (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. Finally there is a distance measure which is a fraction of the ray length. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. 
 
+![](banana.gif)
+
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. If an average score of +13 over 100 consecutive episodes is reached, the game is solved! 
 
 ## Dependancies
@@ -27,4 +29,4 @@ The folders are organized as follows:
 There are 4 models benchmarked, and the training loss is given below: 
 ![Benchmark](benchmark_unity_environment.png)
 
-![](banana.gif)
+
