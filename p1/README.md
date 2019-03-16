@@ -17,7 +17,7 @@ A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is
 Please look at the requirement.txt
 
 ## Run the code
-If you want to train the models, you may use the [train_unity.py](main training) file or the Report.ipyh notebook. If you want to evaluate the models, run evaluate.py, which loads a model with weights from [stored_weights](stored_weights) folder. 
+If you want to train the models, you may use the [train_unity.py](train_unity.py) file or the Report.ipyh notebook. If you want to evaluate the models, run evaluate.py, which loads a model with weights from [stored_weights](stored_weights) folder. 
 
 The folders are organized as follows:
 - [models](models) contains the dqn network.
