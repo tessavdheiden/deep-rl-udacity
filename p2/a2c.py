@@ -8,7 +8,7 @@ best_model_path = "stored_weights/checkpoint_a2c.pth"
 
 if __name__ == "__main__":
     # prepare environment
-    env = UnityEnvironment(file_name=unity_environment_path)
+    env = UnityEnvironment(file_name=unity_environment_path, no_graphics=True)
     brain_name = env.brain_names[0]
     brain = env.brains[brain_name]
     env_info = env.reset(train_mode=True)[brain_name]
