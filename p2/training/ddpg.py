@@ -11,22 +11,24 @@ def ddpg_unity(agent, env, brain_name, env_info, model_name, n_episodes=2000, ma
     eps = eps_start  # initialize epsilon
     for i_episode in range(1, n_episodes + 1):
         env_info = env.reset(train_mode=True)[brain_name]  # reset the environment
-        state = env_info.vector_observations[0]  # get the current state
+        states = env_info.vector_observations  # get the current state
         score = 0  # initialize the score
         for t in range(max_t):
-            action = agent.act(state, eps)  # select an action
-            env_info = env.step(action)[brain_name]  # send the action to the environment
-            next_state = env_info.vector_observations[0]  # get the next state
-            reward = env_info.rewards[0]  # get the reward
-            done = env_info.local_done[0]  # see if episode has finished
-            agent.step(state, action, reward, next_state, done)
-            score += reward  # update the score
-            state = next_state  # roll over the state to next time step
-            if done:  # exit loop if episode finished
+            actions = agent.act(states, eps)  # select an action
+            env_info = env.step(actions)[brain_name]  # send the action to the environment
+            next_states = env_info.vector_observations  # get the next state
+            rewards = env_info.rewards  # get the reward
+            dones = env_info.local_done # see if episode has finished
+            #agent.step(states, actions, rewards, next_states, dones)
+            for state, action, reward, next_state, done in zip(states, actions, rewards, next_states, dones):
+                agent.step(state, action, reward, next_state, done)  # send actions to the agent
+            scores += rewards  # update the score
+            states = next_states  # roll over the state to next time step
+            if np.any(dones):  # exit loop if episode finished
                 break
 
-        scores_window.append(score)  # save most recent score
-        scores.append(score)  # save most recent score
+        scores_window.append(np.mean(scores))  # save most recent score
+        scores.append(np.mean(scores))  # save most recent score
         eps = max(eps_end, eps_decay * eps)  # decrease epsilon
         print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
         if i_episode % 100 == 0:
