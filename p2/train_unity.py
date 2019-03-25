@@ -12,7 +12,7 @@ from training.ddpg import ddpg_unity
 from unityagents import UnityEnvironment
 from models.ddpg_agent import Agent, SoftAgent
 
-env = UnityEnvironment(file_name="Reacher_Linux/Reacher.x86_64", no_graphics = True)
+env = UnityEnvironment(file_name="Reacher_Linux_multi/Reacher_Linux/Reacher.x86_64", no_graphics = True)
 seed=0
 
 # get the default brain
