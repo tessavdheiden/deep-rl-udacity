@@ -11,10 +11,11 @@ def get_var_name(var):
     name = [k for k, v in callers_local_vars if v is var]
     return name[0]
 
-from training.ddpg import ddpg_unity
+from training.ddpg import ddpg
 
 def training_session_unity(agent, env, brain_name, env_info, model_name, n_episodes, max_t, buckets=5):
-    scores_y = np.asarray(ddpg_unity(agent, env, brain_name, env_info, model_name, n_episodes, max_t))
+    num_agents = len(env_info.agents)
+    scores_y = np.asarray(ddpg(agent, env, num_agents, True, brain_name, model_name, n_episodes, max_t))
 
     bucket_size = n_episodes // buckets
     scores_mean = np.zeros(buckets+1)
