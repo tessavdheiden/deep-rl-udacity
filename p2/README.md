@@ -24,7 +24,7 @@ The folders are organized as follows:
 - [stored_weights](stored_weights) contains the trained models. 
 
 There are 4 models benchmarked, and the training loss is given below: 
-![Benchmark](benchmark_unity_environment.png)
+![Benchmark](unity_environment_models_ddpg_a2c.png)
 
 ## Dependancies
 The code is written in Python and Pytorch with the following dependancies [requirements.txt](requirements.txt)

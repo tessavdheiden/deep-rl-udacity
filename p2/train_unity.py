@@ -8,9 +8,12 @@ print(torch.__version__)
 print(tf.__version__)
 print(np.__version__)
 
-from training.ddpg import ddpg_unity
 from unityagents import UnityEnvironment
 from models.ddpg_agent import Agent, SoftAgent
+from models.a2c_agent import ACAgent
+from training.ddpg import ddpg
+#from training.a2c import a2c
+
 
 env = UnityEnvironment(file_name="Reacher_Linux_multi/Reacher_Linux/Reacher.x86_64", no_graphics = True)
 seed=0
@@ -24,26 +27,39 @@ action_size = brain.vector_action_space_size
 env_info = env.reset(train_mode=train_mode)[brain_name] # reset the environment
 state = env_info.vector_observations[0]
 state_size = len(state)
+num_agents = len(env_info.agents)
 
-#ddpg = Agent(state_size, action_size, seed)
-soft = SoftAgent(state_size, action_size, seed)
 
-n_episodes = 500
+ddpg_agent = Agent(state_size, action_size, seed)
+#a2c_agent = ACAgent(state_size, action_size, seed, num_agents,
+##                rollout_length=5,
+ #               lr=1e-4,
+ #               lr_decay=.95,
+ #               gamma=.95,
+ #               value_loss_weight=1,
+ #               gradient_clip=5,
+ #               )
+
+
+#soft = SoftAgent(state_size, action_size, seed)
+
+n_episodes = 200
 max_t = 1000
 n_training_sessions = 1
 
-#scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, scores_vanilla_y = training_session_unity(ddpg, env, brain_name, env_info, get_var_name(ddpg), n_episodes, max_t)
-scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, scores_vanilla_y = training_session_unity(soft, env, brain_name, env_info, get_var_name(soft), n_episodes, max_t)
+scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, scores_vanilla_y = training_session_unity(ddpg, ddpg_agent, env, brain_name, env_info, get_var_name(ddpg), n_episodes, max_t)
+#scores_a2c_x, scores_a2c_mean, scores_a2c_std, scores_a2c_y = training_session_unity(a2c, a2c_agent, env, brain_name, env_info, get_var_name(ddpg), n_episodes, max_t)
+#scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, scores_vanilla_y = training_session_unity(soft, env, brain_name, env_info, get_var_name(soft), n_episodes, max_t)
 
 
 # plot the scores
 fig = plt.figure()
 ax = fig.add_subplot(111)
-#plot_multiple_sessions(scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, label=get_var_name(ddpg), color='gray')
-plot_multiple_sessions(scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, label=get_var_name(soft), color='blue')
+plot_multiple_sessions(scores_vanilla_x, scores_vanilla_mean, scores_vanilla_std, label=get_var_name(ddpg), color='gray')
+#plot_multiple_sessions(scores_a2c_x, scores_a2c_mean, scores_a2c_std, label=get_var_name(a2c), color='blue')
 plt.plot(np.arange(len(scores_vanilla_y)), scores_vanilla_y, alpha=.1)
 plt.legend()
 plt.ylabel('Score')
 plt.xlabel('Episode #')
-plt.savefig(get_root_dir() + '/benchmark_unity_environment.png')
+plt.savefig(get_root_dir() + '/unity_environment_model_{}.png'.format(get_var_name(ddpg)))
 plt.show()
