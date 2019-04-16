@@ -1,39 +1,38 @@
 # deep-rl-udacity
 Code for the Navigation project.
+The environment are 20 robots trying to reach a target and the algorithms implemented for solving the environment are A2C and DDPG. 
 
 ## Environment
-The Unity Banana environment has contains one agent that navigates a large environment with bananas. The goal is to collect as many yellow bananas, while avoiding the blue ones. At each time step, it has four actions at its disposal:
+In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. The goal of the agent is to maintain its position at the target location for as many time steps as possible.
 
-0 - walk forward
-1 - walk backward
-2 - turn left
-3 - turn right
+The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
-The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction. The 35 dimensions of ray perception are broken down as: 7 rays projecting from the agent at the following angles (and returned back in the same order): [20, 90, 160, 45, 135, 70, 110] where 90 is directly in front of the agent. Each ray is 5 dimensional and it projected onto the scene. If it encounters one of four detectable objects (i.e. yellow banana, wall, blue banana, agent), the value at that position in the array is set to 1. Finally there is a distance measure which is a fraction of the ray length. Each ray is [Yellow Banana, Wall, Blue Banana, Agent, Distance]. 
+![](robot.gif)
 
-![](banana.gif)
-
-A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. If an average score of +13 over 100 consecutive episodes is reached, the game is solved! 
+The environment is considered solved when the average score over the previous 100 episodes is at least +30 when averaging the returns across all agents in the environment.
 
 ## Run the code
-If you want to train the models, you may use the [train_unity.py](train_unity.py) file or the [Report.ipynb](Report.ipynb) notebook. If you want to evaluate the models, load a the weights of a trained model from the [stored_weights](stored_weights) folder. 
+If you want to train the models, you may use the [train_unity.py](train_unity.py) file or the [Continuous.ipynb](Continuous.ipynb) notebook. If you want to evaluate the models, load a the weights of a trained model from the [stored_weights](stored_weights) folder. 
 
 The folders are organized as follows:
 - [models](models) contains the dqn network.
 - [training](training) contains the dqn algorithms for both the unity and lunar-gym environment.
 - [stored_weights](stored_weights) contains the trained models. 
 
-There are 4 models benchmarked, and the training loss is given below: 
-![Benchmark](unity_environment_models_ddpg_a2c.png)
+There are models benchmarked, and the training loss is given below: 
+![A2C](unity_environment_model_a2c.png)
+![DDPG](unity_environment_model_ddpg.png)
+
+Please read the [Report.ipynb](Report.ipynb) to see how the project is solved. 
 
 ## Dependancies
 The code is written in Python and Pytorch with the following dependancies [requirements.txt](requirements.txt)
 
 You need only select the environment that matches your operating system:
-    - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
-    - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
-    - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
-    - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
+        - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
+        - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
+        - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip)
+        - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip)
 
 Which you need to unzip and put in this repository.
 

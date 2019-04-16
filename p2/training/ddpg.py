@@ -57,7 +57,7 @@ def ddpg(agent, env, num_agents, train_mode, brain_name, model_name, n_episodes=
             torch.save(agent.critic_local.state_dict(), get_root_dir() +  '/stored_weights/checkpoint_critic.pth')
             print('\rEpisode {}\tTotal Average Score: {:.2f}'.format(i_episode, total_average_score))
 
-        if total_average_score >= goal_score and i_episode >= 100:
+        if total_average_score >= goal_score:# and i_episode >= 100:
             print('Problem Solved after {} epsisodes!! Total Average score: {:.2f}'.format(i_episode,
                                                                                            total_average_score))
             torch.save(agent.actor_local.state_dict(),

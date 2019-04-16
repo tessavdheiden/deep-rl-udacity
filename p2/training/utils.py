@@ -15,11 +15,13 @@ def get_var_name(var):
 def training_session_unity(algorithm, agent, env, brain_name, env_info, model_name, n_episodes, max_t, buckets=5):
     num_agents = len(env_info.agents)
     scores_y = np.asarray(algorithm(agent, env, num_agents, True, brain_name, model_name, n_episodes, max_t))
-
-    bucket_size = n_episodes // buckets
+    print(scores_y)
+    solved_episodes = len(scores_y)
+    bucket_size = solved_episodes // buckets
     scores_mean = np.zeros(buckets+1)
     scores_std = np.zeros(buckets+1)
-    scores_x = np.arange(buckets+1) * (n_episodes // buckets)
+    scores_x = np.arange(buckets+1) * (solved_episodes // buckets)
+
     for bucket in range(buckets):
         start = bucket*bucket_size
         end = start + bucket_size
