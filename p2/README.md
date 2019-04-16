@@ -20,8 +20,8 @@ The folders are organized as follows:
 - [stored_weights](stored_weights) contains the trained models. 
 
 There are models benchmarked, and the training loss is given below: 
-![A2C](unity_environment_model_a2c.png)
-![DDPG](unity_environment_model_ddpg.png)
+![A2C](plots/unity_environment_model_a2c.png)
+![DDPG](plots/unity_environment_model_ddpg.png)
 
 Please read the [Report.ipynb](Report.ipynb) to see how the project is solved. 
 
