@@ -28,6 +28,16 @@ Please read the [Report.ipynb](Report.ipynb) to see how the project is solved.
 ## Dependancies
 The code is written in Python and Pytorch with the following dependancies [requirements.txt](requirements.txt)
 
+If you want to install the required Python packages use:
+```
+pip install -r requirements.txt
+```
+
+If you want to install the project with pip, use:
+```
+pip install -e .
+```
+
 You need only select the environment that matches your operating system:
         - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
         - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
