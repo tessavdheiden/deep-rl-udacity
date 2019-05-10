@@ -1,7 +1,7 @@
 [//]: # (Image References)
 
 [image1]: https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif "Trained Agent"
-[image2]: https://user-images.githubusercontent.com/10624937/42135622-e55fb586-7d12-11e8-8a54-3c31da15a90a.gif "Soccer"
+[image2]: https://github.com/tessavdheiden/deep-rl-udacity/tree/master/p3/MADDPG_learning_curve.png "MADDPG learning curve"
 
 
 # Project 3: Collaboration and Competition
@@ -41,6 +41,14 @@ For this project, you will work with the [Tennis](https://github.com/Unity-Techn
 
 2. Place the file in the DRLND GitHub repository, in the `p3/` folder, and unzip (or decompress) the file. 
 
-### Instructions
+3. Follow the instructions in `Tennis.ipynb` to get started with training your an agent!
 
-Follow the instructions in `Tennis.ipynb` to get started with training your an agent!
+### Benchmark
+
+- DDPG (Deep Deterministic Policy Gradient) is an actor-critic algorithm with two seperate networks, one for taking actions and the other for estimating the V or Q-values. 
+- D4PG (Distributed Distributional) applies a set of improvements over DDPG, among one of them being the estimated Q-values as a random variable. 
+- MADDPG (Multi-Agent) are multiple DDPG networks designed for cooperative or competitative games played by multiple agents. 
+
+### Results
+
+![MADDPG learning curve][image2]
