@@ -1,7 +1,7 @@
 [//]: # (Image References)
 
 [image1]: https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif "Trained Agent"
-[image2]: https://raw.githubusercontent.com/tessavdheiden/deep-rl-udacity/blob/master/p3/MADDPG_learning_curve.png "MADDPG learning curve"
+[image2]: MADDPG_learning_curve.png "MADDPG learning curve"
 
 
 # Project 3: Collaboration and Competition
