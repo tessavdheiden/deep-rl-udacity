@@ -2,6 +2,7 @@
 
 [image1]: https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif "Trained Agent"
 [image2]: MADDPG_learning_curve.png "MADDPG learning curve"
+[image3]: MA4DPG_learning_curve.png "MA4DPG learning curve"
 
 
 # Project 3: Collaboration and Competition
@@ -51,6 +52,10 @@ For this project, you will work with the [Tennis](https://github.com/Unity-Techn
 
 ### Results
 
-As can seen from the plot below, the environment was solved in 5594 episodes by the DDPG algorithm!
+As can seen from the plot below, the environment was solved in 5594 episodes by the DDPG algorithm! But look at the next image: The D4PG algorithm saved the environment only in 477 episodes, more than 10 times faster! 
 ![MADDPG learning curve][image2]
+
+![MA4DPG learning curve][image3]
+
+
 
