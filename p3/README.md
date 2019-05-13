@@ -41,7 +41,7 @@ For this project, you will work with the [Tennis](https://github.com/Unity-Techn
 
 2. Place the file in the DRLND GitHub repository, in the `p3/` folder, and unzip (or decompress) the file. 
 
-3. Follow the instructions in `Tennis.ipynb` to get started with training your an agent!
+3. Follow the instructions in `Tennis.ipynb` to get started with training an agent with the DDPG algorithm! Or use `Tennis_D4PG.ipynb` to do it with the D4PG algorithm. 
 
 ### Benchmark
 
@@ -51,4 +51,6 @@ For this project, you will work with the [Tennis](https://github.com/Unity-Techn
 
 ### Results
 
+As can seen from the plot below, the environment was solved in 5594 episodes by the DDPG algorithm!
 ![MADDPG learning curve][image2]
+
