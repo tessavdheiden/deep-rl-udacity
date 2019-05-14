@@ -62,7 +62,9 @@ As can seen from the plot below, the environment was solved in 5594 episodes by 
 #### DDPG
 The weights of the critic are updated to minimize the difference between the predicted and actual Q-values:
 
-<img src="https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t " /> 
+```math
+SE = \frac{\sigma}{\sqrt{n}}
+```
 
 In code we do this by by minimizing the difference between the TD target (Q(st+1,at+1) from the target networks) and the expected values (Q(st,at) from the critic network):
 ```python
