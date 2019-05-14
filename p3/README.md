@@ -59,26 +59,7 @@ As can seen from the plot below, the environment was solved in 5594 episodes by 
 
 ### Model details
 
-#### DDPG
-The weights of the critic are updated to minimize the difference between the predicted and actual Q-values:
-
-```math
-SE = \frac{\sigma}{\sqrt{n}}
-```
-
-In code we do this by by minimizing the difference between the TD target (Q(st+1,at+1) from the target networks) and the expected values (Q(st,at) from the critic network):
-```python
-q_targets = rewards + (gamma * q_targets_next))
-q_expected = critic(states, actions)
-critic_loss = F.mse_loss(q_expected, q_targets)
-```
-
-The weights of the actor are updated to maximize the reward, estimated from the critic:
-```python
-actor_loss = -self.critic_local(states, actions_pred).mean()
-```
-
-#### D4PG
+Please read `Report.ipynb` to get familiar with the models and implementation.
 
 
 
