@@ -59,7 +59,7 @@ As can seen from the plot below, the environment was solved in 5594 episodes by 
 
 ### Model details
 
-Please read `Report.ipynb` to get familiar with the models and implementation.
+Please read `Report.ipynb` to get familiar with the models and implementation (achitecture and hyper parameters). It also contains future a list of future improvements. 
 
 
 
